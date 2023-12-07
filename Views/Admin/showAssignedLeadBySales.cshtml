@@ -1,0 +1,356 @@
+﻿@model List<macreel_setup.Models.admin.lead_mangement>
+
+@{
+    ViewBag.Title = "showAssignedLeadBySales";
+    Layout = "~/Views/Shared/admin_mst.cshtml";
+}
+
+<style>
+    .hiddenId {
+        display: none;
+    }
+
+    .error {
+        color: red;
+        font-size: 18px;
+    }
+</style>
+
+<link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>*@
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Assigned Lead List</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active"> Assigned Lead List</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+
+    <section class="content">
+        <div class="container-fluid">
+
+
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+
+                            <h3 class="card-title float-right">Lead List </h3>
+                        </div>
+
+
+
+
+                        <div class="card-body">
+
+                            <table id="assignedleadtbl" class="display" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr class="bg-info">
+                                        <th>Client Name</th>
+                                        <th>Contact No</th>
+                                        <th>Email</th>
+                                        <th>Address</th>
+                                        <th class="hiddenId"></th>
+                                        <th>Assign To</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>@item.ContactPerson</td>
+                                                <td>@item.ContactMobileNumber</td>
+                                                <td>@item.ContactEmail</td>
+                                                <td>@item.Address</td>
+                                                <td class="hiddenId">@item.LeadID</td>
+                                                <td>@item.employee_first_name</td>
+                                                <td>
+                                                    <a href="/admin/viewAssignedLeadByLeadId?leadId=@(item.LeadID)" class="btn btn-sm showdetail"><i class="fas fa-eye"></i></a>
+
+                                                    <span class="re-assign"> <i class="fas fa-edit"></i></span> 
+                                                    @*  <span><a href="/admin/viewAssignedLeadByLeadId?leadId=@(item.LeadID)"><i class="fa fa-eye" aria-hidden="true"></i></a></span>*@
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                                <tfoot>
+
+                                </tfoot>
+                            </table>
+
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- /.container-fluid -->
+    </section>
+
+
+
+
+
+    <div class="modal" id="showleaddetailsModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">lead Details</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table id="detailstable" class="table">
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+<div class="modal" id="reassignLeadModal2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Re Assign</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-10">
+                        <span>Client : </span> <span style="color:rebeccapurple" id="clientname"></span>
+                        <span>Contact : </span>   <span style="color: rebeccapurple" id="contactno"></span>
+                        <span>Email : </span>   <span style="color: rebeccapurple" id="email"></span>
+                        <span>Address : </span>   <span style="color: rebeccapurple" id="address"></span>
+
+                    </div>
+                </div>
+                <form id="reassignForm">
+
+                    <div class="row">
+                        <label class="col-sm-4 col-form-label">Employee Name</label>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <select class="form-control sn-required" name="agentId">
+                                    <option value="">--Select Agent--</option>
+                                    @if (ViewBag.AgentList != null)
+                                    {
+                                        foreach (var item in ViewBag.AgentList as List<SelectListItem>)
+                                        {
+                                            <option value="@item.Value">@item.Text</option>
+                                        }
+                                    }
+                                </select>
+                                <span class="agentError erorr" style="color:red"></span>
+                            </div>
+
+                            <input type="hidden" id="LeadId" name="LeadId" />
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div class="form-group">
+
+                                <button type="submit" class="btn btn-sm btn-primary" id="btnReassign">Submit</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $('#assignedleadtbl').DataTable();
+</script>
+
+<script>
+
+    $(document).ready(function () {
+
+        $(document).on('click', 'table#assignedleadtbl tbody tr td .re-assign', function () {
+
+            // $('#myModal').modal({ show: true });
+            //console.log('shdkfh');
+
+            var currentRow = $(this).closest("tr");
+
+            var clientName = currentRow.find("td:eq(0)").html();
+            var contactno = currentRow.find("td:eq(1)").html();
+            var email = currentRow.find("td:eq(2)").html();
+            var address = currentRow.find("td:eq(3)").html();
+            var LeadId = currentRow.find("td:eq(4)").html();
+            //alert(LeadId);
+
+            $('#clientname').html(clientName);
+            $('#contactno').html(contactno);
+            $('#email').html(email);
+            $('#address').html(address);
+            $('#LeadId').val(LeadId);
+
+            $('#reassignLeadModal2').modal('show');
+
+
+
+
+
+
+
+            $("#btnReassign").click(function (ev) {
+                ev.preventDefault();
+                // $("#userloginform").validate();
+
+                var agentId = $('select[name="agentId"]').val();
+                if (agentId == '' || agentId == undefined) {
+                    $('.agentError').html('Please select agent');
+                    return false;
+                } else {
+                    $('.agentError').html('');
+                }
+
+                // alert('re assign');
+                var selectLeadId = $('#LeadId').val();
+                //  alert(selectLeadId);
+
+                $.ajax({
+                    url: '/admin/reAssignLead/',
+                    // data: { 'assigObj': postData },
+                    data: JSON.stringify({ agentId: '' + agentId + '', LeadId: '' + selectLeadId + '' }),
+
+                    type: 'POST',
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        console.log(data);
+
+                    },
+                    error: function (request, error) {
+                        alert("something error occure");
+
+
+
+                    }
+                });
+
+            });
+
+
+
+
+
+
+        });
+    });
+</script>
+
+
+<script>
+    $('#leadtable').DataTable();
+    $(document).ready(function () {
+
+
+        // $('#showquotdetailsModal').modal('show');
+
+
+        $('.showdetail').on('click', function (ev) {
+            ev.preventDefault();
+            var url = $(this).attr("href");
+            $.ajax({
+                type: 'Get',
+                url: url,
+                success: function (data) {
+                    //alert(JSON.stringify(data));
+                    //  console.log(data);
+
+                    var tableHTML = '';
+
+                    $.each(data, function (index, item) {
+                        // alert(index);
+                        if (index != 'LeadID' && index != 'id' && index != 'employee_first_name' && index != 'countrylist' && index != 'employe_list' && index != 'LeadStatus' && index != 'Client' && index != 'LeadGeneratedBy' && index != 'LeadGeneratedByType' && index !='LeadGenerationDate') {
+                            tableHTML += '<tr>';
+                            tableHTML += '<th>' + index.replace(/#|_/g, ' ') + ': </th>';
+                            tableHTML += '<td>' + item + '</td>';
+                            tableHTML += '</tr>';
+                        }
+                    });
+
+                    $('#detailstable').html(tableHTML);
+
+                    $('#showleaddetailsModal').modal('show');
+
+                },
+                error: function (error) {
+                    // Code to handle the error
+                    console.error('Error occurred', error);
+                }
+            });
+
+            // alert(action);
+        });
+    });
+
+</script>

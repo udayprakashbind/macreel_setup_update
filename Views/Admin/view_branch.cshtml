@@ -1,0 +1,105 @@
+﻿@model List<macreel_setup.Models.admin.manage_branch>
+@{
+    ViewBag.Title = "view_branch";
+    Layout = "~/Views/Shared/admin_mst.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>View Branch List</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Branch List</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"></h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Branch Name</th>
+                                        <th>Land Line No</th>
+                                        <th>City Name</th>
+                                        <th>Contact Person</th>
+                                        <th>Contact Person Mobile</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model != null && Model.Count > 0)
+                                    {
+                                        foreach (var item in Model)
+                                        {
+                                            <tr>
+
+                                                <td>@Html.Raw(item.BranchName)</td>
+                                                <td>@Html.Raw(item.LandLineNo)</td>
+                                                <td>@Html.Raw(item.CityName)</td>
+                                                <td>@Html.Raw(item.ContactPerson)</td>
+                                                <td>@Html.Raw(item.ContactPersonMobile)</td>
+
+                                                <td>
+                                                    <a href="/admin/branch_management?id=@(item.id)"><i class="fas fa-edit"></i></a>
+                                                    <a href="/admin/delet_branch?id=@(item.id)"><i class="fas fa-regular fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+
+
+
+
+

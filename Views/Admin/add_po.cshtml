@@ -1,0 +1,288 @@
+﻿@model macreel_setup.Models.admin.manage_po
+
+@{
+    ViewBag.Title = "add_po";
+    Layout = "~/Views/Shared/admin_mst.cshtml";
+}
+
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Add /Update PO</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">PO Mangement</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+
+
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">Add/Update PO</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            @using (Html.BeginForm("insert_po", "admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>PO_Number</label>
+                                            <input type="number" class="form-control" placeholder="Enter PO No..." name="PO_Number" value="@Model.PO_Number">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>LAN</label>
+                                            <input type="text" class="form-control" placeholder="Enter LAN No..." name="LAN" value="@Model.LAN">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>Vendor_Id</label>
+                                            <input type="text" class="form-control" placeholder="Enter Vendor_Id..." name="Vendor_Id" value="@Model.Vendor_Id">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Client_ID</label>
+                                            <input type="text" class="form-control" placeholder="Enter Client_ID..." name="Client_ID" value="@Model.Client_ID">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>PO_Date</label>
+                                            <input type="date" class="form-control" id="PO_Date" name="PO_Date" placeholder="DD/MM/YYYY" value="@Model.PO_Date">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Manager</label>
+                                            <input type="text" class="form-control" placeholder="Enter Manager..." name="Manager" value="@Model.Manager">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>Vendor_Email</label>
+                                            <input type="email" class="form-control" placeholder="Enter Vendor_Email..." name="Vendor_Email" value="@Model.Vendor_Email">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>PromoCode</label>
+                                        <input type="text" class="form-control" placeholder="Enter PromoCode ..." name="PromoCode" value="@Model.PromoCode">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>SDF_Order</label>
+                                            <input type="text" class="form-control" name="SDF_Order" placeholder="Enter SDF_Order ...." value="@Model.SDF_Order">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>MS_Account_Manager</label>
+                                            <input type="text" class="form-control" placeholder="Enter MS_Account_Manager..." name="MS_Account_Manager" value="@Model.MS_Account_Manager">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>Payment_InDays</label>
+                                            <input type="number" class="form-control" placeholder="Enter  Payment In Days..." name="Payment_InDays" value="@Model.Payment_InDays">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Delivery_In_Days</label>
+                                            <input type="number" class="form-control" placeholder="Enter Delivery_In_Days..." name="Delivery_In_Days" value="@Model.Delivery_In_Days">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>Delivery_Mode</label>
+                                            <input type="text" class="form-control" placeholder="Enter Delivery_Mode ..." name="Delivery_Mode" value="@Model.Delivery_Mode">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Domain ID</label>
+                                            <input type="text" class="form-control" placeholder="Enter Domain ID..." name="DomainID" value="@Model.DomainID">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>MPN_ID</label>
+                                            <input type="text" class="form-control" placeholder="Enter MPN_ID..." name="MPN_ID" value="@Model.MPN_ID">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>AEP_Authorization_No</label>
+                                            <input type="text" class="form-control" placeholder="Enter AEP_Authorization_No..." name="AEP_Authorization_No" value="@Model.AEP_Authorization_No">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>CDC Discount(%)</label>
+                                            <input type="number" class="form-control" placeholder="Enter  CDC_Discount..." name="CDC_Discount" value="@Model.CDC_Discount">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>CDC_Discount_Amount</label>
+                                            <input type="number" class="form-control" placeholder="Enter CDC_Discount_Amount..." name="CDC_Discount_Amount" value="@Model.CDC_Discount_Amount">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <!-- textarea -->
+                                        <div class="form-group">
+                                            <label>After_Discount_Amount</label>
+                                            <input type="number" class="form-control" name="After_Discount_Amount" placeholder="Enter After_Discount_Amount ..." value="@Model.After_Discount_Amount">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>IGST_Tax</label>
+                                            <input type="number" class="form-control" placeholder="Enter IGST_Tax..." name="IGST_Tax" value="@Model.IGST_Tax">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>Tax_Amount</label>
+                                            <input type="number" class="form-control" placeholder="Enter Tax_Amount..." name="Tax_Amount" value="@Model.Tax_Amount">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>After_Tax_Amount</label>
+                                            <input type="number" class="form-control" placeholder="Enter After_Tax_Amount..." name="After_Tax_Amount" value="@Model.After_Tax_Amount">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>CN</label>
+                                            <input type="number" class="form-control" placeholder="Enter CN..." name="CN" value="@Model.CN">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>CN_Amount </label>
+                                            <input type="number" class="form-control" placeholder="Enter CN_Amount..." name="CN_Amount" value="@Model.CN_Amount">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Grand_Total_Amount</label>
+                                            <input type="number" class="form-control" placeholder="Enter Grand_Total_Amount..." name="Grand_Total_Amount" value="@Model.Grand_Total_Amount">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Purchase_Amount </label>
+                                            <input type="number" class="form-control" name="Purchase_Amount" placeholder="Enter Purchase_Amount ..." value="@Model.Purchase_Amount">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Total_Sales_Amount</label>
+                                            <input type="number" class="form-control" placeholder="Enter Total_Sales_Amount..." name="Total_Sales_Amount" value="@Model.Total_Sales_Amount">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>PL_Amount </label>
+                                            <input type="number" class="form-control" name="PL_Amount" placeholder="Enter PL_Amount ..." value="@Model.PL_Amount">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="card-footer">
+                                    <input type="hidden" name="id" id="id" value="@Model.id" />
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            }
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</div>

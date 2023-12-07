@@ -1,0 +1,93 @@
+﻿@model List<macreel_setup.Models.admin.manage_po>
+
+@{
+    ViewBag.Title = "view_po";
+    Layout = "~/Views/Shared/admin_mst.cshtml";
+}
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>View PO List</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">PO List</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+
+
+
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+
+                            <h3 class="card-title float-right">Po List </h3>
+                        </div>
+                        <div class="card-body">
+                            <table id="example" class="table table-bordered table-hover justify-content-center text-center">
+                                <thead>
+                                    <tr class="bg-primary">
+                                        <th>Sr.No.</th>
+                                        <th>PO No</th>
+                                        <th>Vendor_Id</th>
+                                        <th>Client_ID</th>
+                                        <th>PO_Date</th>
+                                        <th>Manager</th>
+                                        <th>Vendor_Email</th>
+                                        <th>LAN</th>
+                                        <th>PromoCode</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        int i = 1;
+                                        foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>@i</td>
+                                                <td>@item.PO_Number</td>
+                                                <td>@item.Vendor_Id</td>
+                                                <td>@item.Client_ID</td>
+                                                <td>@item.PO_Date</td>
+                                                <td>@item.Manager</td>
+                                                <td>@item.Vendor_Email</td>
+                                                <td>@item.LAN</td>
+                                                <td>@item.PromoCode</td>
+                                                <td><a href="/admin/add_po?id=@(item.id)" class="btn btn-success" style="width:50px"><i class="fas fa-edit"></i></a> || <a href="/admin/delet_po?id=@(item.id)" class="btn btn-danger " style="width:50px"> <i class="fas fa-solid fa-trash"></i></a></td>
+                                            </tr>
+                                            i++;
+                                        }
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- /.container-fluid -->
+    </section>
+
+
+    </div>

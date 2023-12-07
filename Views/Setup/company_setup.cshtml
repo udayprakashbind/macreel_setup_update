@@ -1,0 +1,426 @@
+﻿@model macreel_setup.Models.Setup.company_setup
+@{
+    ViewBag.Title = "company_setup";
+    Layout = "~/Views/Shared/admin_mst.cshtml";
+}
+
+<style>
+    label {
+        color: #3391b7;
+    }
+</style>
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Company Setup</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Company Setup</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Company Details</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <form>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="">Company Name:-</label>
+                                            <input type="text" class="form-control" id="comp_name" name="comp_name" placeholder="Enter Company Name" value="@Model.comp_name" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="">Company Address:-</label>
+                                            <input type="text" class="form-control" id="address" name="address" placeholder="Enter Company Address" value="@Model.address" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="">Admin User Id:-</label>
+                                            <input type="text" class="form-control" id="admin_userid" name="admin_userid" placeholder="Enter Admin-User-Id" value="@Model.admin_userid" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="">Admin Name:-</label>
+                                            <input type="text" class="form-control" id="admin_name" name="admin_name" placeholder="Enter Admin Name" value="@Model.admin_name" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="">Contact No.:-</label>
+                                            <input type="text" class="form-control" id="contact_no" name="contact_no" placeholder="Enter Contact No" value="@Model.contact_no" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="">Email:-</label>
+                                            <input type="text" class="form-control" id="email" name="email" placeholder="Enter Email" value="@Model.email" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="">GST No.:-</label>
+                                            <input type="text" class="form-control" id="gst_no" name="gst_no" placeholder="Enter GST No" value="@Model.gst_no" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="">User Allowed:-</label>
+                                            <select class="form-control" id="user_allowed" name="user_allowed" @(Model.user_allowed != "" ? "data-select=" + Model.user_allowed + "" : "") required>
+                                                <option value="">--Select User--</option>
+                                                <option value="1-10">1-10 Employee</option>
+                                                <option value="10-50">10-50 Employee</option>
+                                                <option value="50-100">50-100 Employee</option>
+                                                <option value="100 Above">100 Above Employee</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="">Software Price:-</label>
+                                            <input type="text" class="form-control" id="software_price" name="software_price" placeholder="Enter Software Price" value="@Model.software_price" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="">GST Price:-</label>
+                                            <input type="text" class="form-control" id="gst_price" name="gst_price" placeholder="Enter GST Price" value="@Model.gst_price" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="">Total:-</label>
+                                            <input type="text" class="form-control" id="total" name="total" placeholder="" value="@Model.total" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="">Subscription Start Date:-</label>
+                                            <input type="date" class="form-control" id="start-date" name="subs_startdate" placeholder="" value="@Model.subs_startdate">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="">Subscription End Date:-</label>
+                                            <input type="date" class="form-control" id="end-date" name="subs_enddate" placeholder="" value="@Model.subs_enddate" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="">AMC Price:-</label>
+                                            <input type="text" class="form-control" id="amc_price" name="amc_price" placeholder="Enter AMC Price" value="@Model.amc_price" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="">AMC Start Date:-</label>
+                                            <input type="date" class="form-control" id="amc_startdate" name="amc_startdate" placeholder="" value="@Model.amc_startdate">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="">AMC End Date:-</label>
+                                            <input type="date" class="form-control" id="amc_enddate" name="amc_enddate" placeholder="" value="@Model.amc_enddate" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <label for="">Support:-</label>
+                                            <div class="form-group clearfix">
+                                                <div class="icheck-primary d-inline">
+                                                    <input type="radio" id="radiosupport1" name="support" value="normal">
+                                                    <label for="radiosupport1">
+                                                        Normal
+                                                        <br />
+                                                        1 Email And 2 Phone No. Provided to Assist.
+                                                    </label>
+                                                </div>
+
+
+                                                <div class="icheck-primary d-inline">
+                                                    <input type="radio" id="radiosupport2" name="support" value="dedicated">
+                                                    <label for="radiosupport2">
+                                                        Dedicated
+                                                        <br />
+                                                        1 Dedicated Manager With All Perks.
+                                                    </label>
+                                                    @*<p id="dedicated_sec" style="">
+                                                            1 Dedicated Manager With All Perks.
+                                                        </p>*@
+                                                </div>
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <label for="">Domain:-</label>
+                                            <div class="form-group clearfix">
+                                                <div class="icheck-primary d-inline">
+                                                    <input type="radio" id="radiodomain1" name="domain" value="self" onclick="toggledomainDetail('self')">
+                                                    <label for="radiodomain1">
+                                                        Self
+                                                    </label>
+                                                </div>
+                                                <div class="icheck-primary d-inline">
+                                                    <input type="radio" id="radiodomain2" name="domain" value="macreel" onclick="toggledomainDetail('macreel')">
+                                                    <label for="radiodomain2">
+                                                        Macreel
+                                                    </label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="domain_detail" style="display:none;">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Domain Name:-</label>
+                                                <input type="text" class="form-control" id="domain_name" name="domain_name" placeholder="Enter Domain Name" value="@Model.domain_name">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Domain Price:-</label>
+                                                <input type="text" class="form-control" id="domain_price" name="domain_price" placeholder="Enter Domain Price" value="@Model.domain_price">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Domain Renewal Date:-</label>
+                                                <input type="date" class="form-control" id="domain_renewal_date" name="domain_renewal_date" placeholder="" value="@Model.domain_renewal_date">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <label for="">Server:-</label>
+                                            <div class="form-group clearfix">
+                                                <div class="icheck-primary d-inline">
+                                                    <input type="radio" id="radioserver1" name="server" value="self" onclick="toggleServerDetail('self')">
+                                                    <label for="radioserver1">
+                                                        Self
+                                                    </label>
+                                                </div>
+                                                <div class="icheck-primary d-inline">
+                                                    <input type="radio" id="radioserver2" name="server" value="Macreel" onclick="toggleServerDetail('Macreel')">
+                                                    <label for="radioserver2">
+                                                        Macreel
+                                                    </label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="server_detail" style="display:none;">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Server Name:-</label>
+                                                <input type="text" class="form-control" id="server_name" name="server_name" placeholder="Enter Server Name" value="@Model.server_name">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Server Price:-</label>
+                                                <input type="text" class="form-control" id="server_price" name="server_price" placeholder="Enter Server Price" value="@Model.server_price">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Server Renewal Date:-</label>
+                                                <input type="date" class="form-control" id="server_renewal_date" name="server_renewal_date" placeholder="" value="@Model.server_renewal_date">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputFile">Logo File input</label>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+
+                                            <input type="file" name="fileupload" class="custom-file-input dropify" id="" data-default-file="/tempimage/@Model.logo">
+
+                                            <input type="hidden" id="logo" name="logo" value="@Model.logo" />
+
+
+                                            <label class="custom-file-label" for="exampleInputFile">Choose Logo</label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">Is Active</label>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+
+                            <div class="card-footer">
+                                <input type="hidden" name="id" id="id" value="@Model.id" />
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.card -->
+
+
+                </div>
+                <!--/.col (left) -->
+            </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+
+<script>
+    $(document).ready(function () {
+
+
+        $("[data-select]").each(function () {
+            var obj = $(this);
+            obj.val(obj.attr("data-select"))
+        });
+
+
+    });
+</script>
+
+<script>
+    function toggleServerDetail(selectedValue) {
+        var serverDetailDiv = document.getElementById('server_detail');
+        if (selectedValue === 'Macreel') {
+            serverDetailDiv.style.display = 'block';
+        } else {
+            serverDetailDiv.style.display = 'none';
+        }
+    }
+
+    function toggledomainDetail(selectedValue) {
+        var domain_detail = document.getElementById('domain_detail');
+        if (selectedValue === 'macreel') {
+            domain_detail.style.display = 'block';
+        } else {
+            domain_detail.style.display = 'none';
+        }
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#gst_price, #software_price').on('blur', function () {
+
+            var gst = parseInt($('#gst_price').val());
+           var soft_price = parseInt($('#software_price').val());
+           var total = 0;
+
+           total = gst + soft_price;
+
+           $('#total').val(total);
+       });
+    });
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        // Function to add one year to the provided date
+        function addOneYear(date) {
+            var d = new Date(date);
+            d.setFullYear(d.getFullYear() + 1);
+            return d.toISOString().slice(0, 10); // Format the date as "YYYY-MM-DD"
+        }
+
+        // Event handler for start date input change
+        $("#start-date").on("change", function () {
+            var startDate = $(this).val();
+            if (startDate) {
+                var endDate = addOneYear(startDate);
+                $("#end-date").val(endDate);
+            }
+        });
+    });
+</script>
+
+
+
+<script>
+    $(document).ready(function () {
+        // Function to add one year to the provided date
+        function addOneYear(date) {
+            var d = new Date(date);
+            d.setFullYear(d.getFullYear() + 1);
+            return d.toISOString().slice(0, 10); // Format the date as "YYYY-MM-DD"
+        }
+
+        // Event handler for start date input change
+        $("#amc_startdate").on("change", function () {
+            var startDate = $(this).val();
+            if (startDate) {
+                var endDate = addOneYear(startDate);
+                $("#amc_enddate").val(endDate);
+            }
+        });
+    });
+</script>

@@ -1,0 +1,355 @@
+﻿@model macreel_setup.Models.admin.lead_mangement
+@{
+    ViewBag.Title = "lead_manage";
+    Layout = "~/Views/Shared/admin_mst.cshtml";
+}
+
+<style>
+    label {
+        color: #3391b7;
+    }
+</style>
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Lead Mangement</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Lead Mangement</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Lead Mangement Field</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        @using (Html.BeginForm("insert_lead", "admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Lead Id:-</label>
+                                                <input type="text" class="form-control" id="LeadID" name="LeadID" placeholder="Enter LeadID" value="@Model.LeadID" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Lead Segment:-</label>
+                                                <input type="text" class="form-control" id="LeadSegment" name="LeadSegment" placeholder="Enter Lead Segment" value="@Model.LeadSegment" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Branch:-</label>
+                                                <input type="text" class="form-control" id="Branch" name="Branch" placeholder="Enter Branch" value="@Model.Branch" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        @*   <div class="col-sm-4">
+           <div class="form-group">
+                <label for="">Client:-</label>
+                <input type="text" class="form-control" id="Client" name="Client" placeholder="Enter Client" value="@Model.Client" required>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="">Client Mobile No.:-</label>
+                <input type="text" class="form-control" id="Telephone" name="Telephone" placeholder="Enter Client Mobile No." value="@Model.Telephone" required>
+            </div>
+        </div>*@
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Client Segment:-</label>
+                                                <input type="text" class="form-control" id="ClientSegment" name="ClientSegment" placeholder="Enter Client Segment" value="@Model.ClientSegment" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="">Contact Person:-</label>
+                                                <input type="text" class="form-control" id="ContactPerson" name="ContactPerson" placeholder="Enter Contact Person" value="@Model.ContactPerson" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="">Contact Designation:-</label>
+                                                <input type="text" class="form-control" id="ContactDesignation" name="ContactDesignation" placeholder="Enter Contact Designation" value="@Model.ContactDesignation" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="">Contact Mobile Number:-</label>
+                                                <input type="text" class="form-control" id="ContactMobileNumber" name="ContactMobileNumber" placeholder="Enter Contact Mobile Number" value="@Model.ContactMobileNumber" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="">Contact Email:-</label>
+                                                <input type="text" class="form-control" id="ContactEmail" name="ContactEmail" placeholder="Enter Contact Email" value="@Model.ContactEmail" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="">Country:-</label>
+                                                <select class="form-control" id="selectCountries" name="country" @(Model.Country != "" ? "data-select=" + Model.Country + "" : "") required>
+                                                    <option value="">--Select Country--</option>
+                                                  
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="">State:-</label>
+                                                <select class="form-control" id="selectStates" name="state" @(Model.State != "" ? "data-select=" + Model.State + "" : "") required>
+                                                    <option value="">--Select State--</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="">City:-</label>
+                                                <select class="form-control" id="selectcity" name="city" @(Model.City != "" ? "data-select=" + Model.City + "" : "") required>
+                                                    <option value="">--Select City--</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="">Area PIN:-</label>
+                                                <input type="text" class="form-control" id="PIN" name="PIN" placeholder="" value="@Model.PIN" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label for="">Address:-</label>
+                                                <textarea class="form-control" id="Address" name="Address">@Model.Address</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="">Client Segment:-</label>
+                                                <input type="text" class="form-control" id="ClientSegment" name="ClientSegment" placeholder="Enter Client Segment" value="@Model.ClientSegment" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="">Client Turnover:-</label>
+                                                <input type="text" class="form-control" id="ClientTurnover" name="ClientTurnover" placeholder="Enter Client Turnover (in crore)" value="@Model.ClientTurnover" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="">Client PCs/ No Of Employee:-</label>
+                                                <input type="text" class="form-control" id="ClientPCsOrNoOfEmployee" name="ClientPCsOrNoOfEmployee" placeholder="" value="@Model.ClientPCsOrNoOfEmployee" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="">Expected Annual Business:-</label>
+                                                <input type="text" class="form-control" id="ExpectedAnnualBusiness" name="ExpectedAnnualBusiness" placeholder="Enter ExpectedAnnualBusiness (in crore)" value="@Model.ExpectedAnnualBusiness" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="">Product Required:-</label>
+                                                <input type="text" class="form-control" id="ProductRequired" name="ProductRequired" placeholder="Enter Product Required" value="@Model.ProductRequired" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="">Product Quantity:-</label>
+                                                <input type="text" class="form-control" id="ProductQuantity" name="ProductQuantity" placeholder="Enter Product Quantity" value="@Model.ProductQuantity" required>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label for="">Product Description:-</label>
+                                                <textarea class="form-control" id="ProductDescription" name="ProductDescription">@Model.ProductDescription</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Service Required:-</label>
+                                                <input type="text" class="form-control" id="ServiceRequired" name="ServiceRequired" placeholder="Enter Service Required" value="@Model.ServiceRequired" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="form-group">
+                                                <label for="">Services Description:-</label>
+                                                <textarea class="form-control" id="ServicesDescription" name="ServicesDescription">@Model.ServicesDescription</textarea>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Estimated Lead Value:-</label>
+                                                <input type="text" class="form-control" id="aadhar_no" name="aadhar_no" placeholder="Enter Aadhar No." value="@Model.EstimatedLeadValue" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Lead Generated By:-</label>
+                                            @*    <input type="text" class="form-control" id="LeadGeneratedBy" name="LeadGeneratedBy"  value="@Model.LeadGeneratedBy" readonly>*@
+
+                                                <select class="form-control" id="LeadGeneratedBy" name="LeadGeneratedBy" @(Model.LeadGeneratedBy != "" ? "data-select=" + Model.LeadGeneratedBy + "" : "") required>
+                                                    <option value="">--Select Reporting Manager--</option>
+                                                    @if (Model.employe_list.Count > 0)
+                                                    {
+                                                        foreach (var item in Model.employe_list)
+                                                        {
+                                                            if (Model.LeadGeneratedBy == item.employee_id.ToString())
+                                                            {
+                                                                <option value="@item.employee_id" selected="selected">@item.name</option>
+                                                            }
+                                                            else
+                                                            {
+                                                                <option value="@item.employee_id">@item.name</option>
+                                                            }
+                                                        }
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Lead Generated By Type:-</label>
+                                                <input type="text" class="form-control" id="LeadGeneratedByType" name="LeadGeneratedByType"  value="@Model.LeadGeneratedByType" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Lead Generation Date:-</label>
+                                                <input type="date" class="form-control" id="LeadGenerationDate" name="LeadGenerationDate" placeholder="" value="@Model.LeadGenerationDate" readonly>
+                                            </div>
+                                        </div>
+                                        @*<div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Lead Assigned To:-</label>
+                                                <select class="form-control" id="LeadAssignedTo" name="LeadAssignedTo" @(Model.LeadAssignedTo != "" ? "data-select=" + Model.LeadAssignedTo + "" : "") required>
+                                                    <option value="">--Select--</option>
+                                                    @if (Model.employe_list.Count > 0)
+                                                    {
+                                                        foreach (var item in Model.employe_list)
+                                                        {
+                                                            if (Model.LeadAssignedTo == item.employee_id.ToString())
+                                                            {
+                                                                <option value="@item.employee_id" selected="selected">@item.name</option>
+                                                            }
+                                                            else
+                                                            {
+                                                                <option value="@item.employee_id">@item.name</option>
+                                                            }
+                                                        }
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Lead Status:-</label>
+                                                <input type="text" class="form-control" id="LeadStatus" name="LeadStatus" placeholder="Enter Lead Status" value="@Model.LeadStatus" required>
+                                            </div>
+                                        </div>*@
+                                    </div>
+
+
+                                </div>
+                                <!-- /.card-body -->
+
+                                <div class="card-footer">
+                                    <input type="hidden" name="id" id="id" value="@Model.id" />
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            
+                                   
+                        }
+                    </div>
+                    <!-- /.card -->
+
+
+                </div>
+                <!--/.col (left) -->
+            </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+
+<script>
+    $(document).ready(function () {
+
+
+
+        var currentdate = moment(new Date()).format("YYYY-MM-DD");
+        //  alert(currentdate);
+        $('#LeadGenerationDate').val(currentdate);
+
+
+
+
+        $("[data-select]").each(function () {
+            var obj = $(this);
+            obj.val(obj.attr("data-select"))
+        });
+
+
+    });
+</script>
+
+

@@ -1,0 +1,206 @@
+﻿@model macreel_setup.Models.admin.manage_branch
+@{
+    ViewBag.Title = "branch_management";
+    Layout = "~/Views/Shared/admin_mst.cshtml";
+}
+
+<style>
+    label {
+        color: #3391b7;
+    }
+
+   /* textarea.form-control {
+        height: 38px;
+    }*/
+</style>
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Branch Mangement</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Branch Mangement</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Branch Mangement Field</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        @using (Html.BeginForm("insert_branch", "admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            <form>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Branch Name:-</label>
+                                                <input type="text" class="form-control" id="BranchName" name="BranchName" placeholder="Enter Branch Name" value="@Model.BranchName" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Branch Email:-</label>
+                                                <input type="text" class="form-control" id="Branch Email" name="Branch Email" placeholder="Enter Branch Email" value="@Model.BranchEmail" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Contact Person:-</label>
+                                                <input type="text" class="form-control" id="ContactPerson" name="ContactPerson" placeholder="Enter Contact Person" value="@Model.ContactPerson" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Land Line No:-</label>
+                                                <input type="text" class="form-control" id="LandLineNo" name="LandLineNo" placeholder="Enter Land Line No" value="@Model.LandLineNo" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Contact Person Mobile:-</label>
+                                                <input type="text" class="form-control" id="ContactPersonMobile" name="ContactPersonMobile" placeholder="Enter Contact 
+ Person Mobile" value="@Model.ContactPersonMobile" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Contact Person Email:-</label>
+                                                <input type="text" class="form-control" id="ContactPersonEmail" name="ContactPersonEmail" placeholder="Enter Contact Person Email" value="@Model.ContactPersonEmail" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">GST No:-</label>
+                                                <input type="text" class="form-control" id="GSTNo" name="GSTNo" placeholder="Enter GST No" value="@Model.GSTNo" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Pan No:-</label>
+                                                <input type="text" class="form-control" id="PanNo" name="PanNo" placeholder="Enter Last Name" value="@Model.PanNo" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Pin Code:-</label>
+                                                <input type="text" class="form-control" id="PinCode" name="PinCode" placeholder="Enter Pin Code" value="@Model.PinCode" required>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Branch Registration No:-</label>
+                                                <input type="text" class="form-control" id="BranchRegistrationNo" name="BranchRegistrationNo" placeholder="Enter Branch Registration No." value="@Model.BranchRegistrationNo" maxlength="10" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">State Name:-</label>
+                                                <input type="text" class="form-control" id="StateName" name="StateName" placeholder="Enter State Name" value="@Model.StateName" maxlength="10" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">State Code:-</label>
+                                                <input type="text" class="form-control" id="StateCode" name="StateCode" placeholder="Enter State Code" value="@Model.StateCode" maxlength="10" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Registration Date:-</label>
+                                                <input type="date" class="form-control" id="RegistrationDate" name="RegistrationDate" placeholder="Enter DOB" value="@Model.RegistrationDate" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">City Name:-</label>
+                                                <input type="text" class="form-control" id="CityName" name="CityName" placeholder="Enter City Name" value="@Model.CityName" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">City Code:-</label>
+                                                <input type="text" class="form-control" id="CityCode" name="CityCode" placeholder="Enter City Code" value="@Model.CityCode" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label for="">Branch Address:-</label>
+                                                <textarea class="form-control" id="BranchAddress" name="BranchAddress">@Model.BranchAddress</textarea>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <!-- /.card-body -->
+
+                                <div class="card-footer">
+                                    <input type="hidden" name="id" id="id" value="@Model.id" />
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        }
+                    </div>
+                    <!-- /.card -->
+
+
+                </div>
+                <!--/.col (left) -->
+            </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+
+<script>
+    $(document).ready(function () {
+
+
+        $("[data-select]").each(function () {
+            var obj = $(this);
+            obj.val(obj.attr("data-select"))
+        });
+
+
+    });
+</script>
+
+
+

@@ -1,0 +1,270 @@
+﻿@model List<macreel_setup.Models.admin.manage_folloupLeadResponse>
+
+@{
+    ViewBag.Title = "FollowUpLeadResponse";
+    Layout = "~/Views/Shared/admin_mst.cshtml";
+}
+
+<link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active"> Follow Up With client </li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+
+
+    <section class="content" id="followupformsection">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+
+
+
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <span style="color:black">Client :</span>  <span style="color:azure"> @ViewBag.clientName ,</span>
+                            <span style="color:black">Contact-No :</span><span style="color:azure">  @ViewBag.contact ,</span>
+                            <span style="color:black">Address :</span><span style="color:azure">  @ViewBag.address ,</span>
+                            <span style="color:black"> Email :</span><span style="color:azure"> @ViewBag.email</span>
+                            <h3 class="card-title float-right"> Follow UP WITH CLIENT </h3>
+                        </div>
+
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <form id="responseform" method="post">
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>Response</label>
+                                            <textarea id="response" class="form-control" placeholder="Enter Response Name ..." name="response"> </textarea>
+                                            @* <input type="text" id="response" class="form-control" placeholder="Enter Response Name ..." name="response">*@
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Current_date</label>
+                                            <input type="date" id="current_date" class="form-control" name="current_date" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <!-- text input -->
+                                        <div class="form-group" id="nextfollowupfield">
+                                            <label>Next Follow UP Date</label>
+                                            <input type="date" id="nextfollow_up_date" class="form-control" name="nextfollow_up_date">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Status</label>
+                                            <div class="form-group">
+                                                <select class="form-control sn-required" name="status" id="status">
+                                                    <option value="">--Status--</option>
+
+
+                                                    <option value="0">inprogress</option>
+                                                    <option value="1">complete</option>
+
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <input type="hidden" name="AgentId" id="AgentId" value="@ViewBag.AgentId " />
+                                    <input type="hidden" name="LeadId" id="LeadId" value="@ViewBag.LeadId " />
+                                    @*<input type="hidden" name="id" id="response_id" />*@
+
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary" id="btnsubmitresponse">Submit</button>
+                                </div>
+
+                            </form>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content" id="viewresponsesection">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+
+
+
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title float-right">View Response </h3>
+                        </div>
+
+                        <!-- /.card-header -->
+                        <div class="card-body" id="tableContainer">
+
+                            <table id="responsetable1" class="table table-bordered table-hover" style="width:100%">
+                                <thead>
+                                    <tr class="bg-info">
+                                        <th>Response</th>
+                                        <th>Current Date</th>
+                                        <th>Next Follow UP Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>@item.response</td>
+                                                <td>@item.current_date</td>
+                                                <td>@item.nextfollow_up_date</td>
+                                                @if (item.status == "0")
+                                                {
+                                                    <td>InProgress</td>
+                                                }
+                                                else
+                                                {
+                                                    <td>complete</td>
+
+                                                }
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<script>
+
+    $('#responsetable1').DataTable();
+
+    $(document).ready(function () {
+
+   
+
+        var currentdate = moment(new Date()).format("YYYY-MM-DD");
+       //  alert(currentdate);
+        $('#current_date').val(currentdate);
+        // var formatcurrentdate   moment(currentdate).format("DD/MM/YYYY");
+
+
+
+        $('#status').on('change', function () {
+          //  alert($(this).val());
+            var status = $(this).val();
+        if (status == 0 || status == undefined || status == '') {
+            $('#nextfollowupfield').show();
+            return false;
+        } else {
+            $('#nextfollowupfield').hide();
+            $('#nextfollow_up_date').val('');
+
+        }
+        });
+
+        
+       
+
+            $('#btnsubmitresponse').on('click', function (e) {
+                e.preventDefault(); // Prevent the form from submitting in the default way
+
+
+
+                var formData = {
+                    response: $('#response').val(),
+                    current_date: $('#current_date').val(),
+                    nextfollow_up_date: $('#nextfollow_up_date').val(),
+                    status: $('#status').val(),
+                    AgentId: $('#AgentId').val(),
+                    LeadId: $('#LeadId').val(),
+                };
+                //  alert(JSON.stringify(formData));
+                // Ajax post request
+                $.ajax({
+                    type: 'POST',
+                    url: '/admin/insertFollowUpLeadResponse/', // Replace 'your_url_here' with the actual URL you want to send the data to
+                    data: formData,
+                    success: function (data) {
+                        // Code to handle the successful response
+
+                       // alert(JSON.stringify(data));
+                        $('#response').val('');
+                        $('#nextfollow_up_date').val('');
+                        $('#status').val('');
+                        var tableHTML = '';
+
+                        // Loop through the response data and populate the table
+                        $.each(data, function (index, item) {
+                            tableHTML += '<tr>';
+                            tableHTML += '<td>' + item.response + '</td>';
+                            tableHTML += '<td>' + item.current_date + '</td>';
+                            tableHTML += '<td>' + item.nextfollow_up_date + '</td>';
+                            if (item.status == '0') {
+                                tableHTML += '<td>' +'InProgress'+'</td>';
+                            } else {
+
+                                tableHTML += '<td>' + 'Complete' + '</td>';
+
+                            }
+                            tableHTML += '</tr>';
+                        });
+
+                        //tableHTML += '</tbody></table>';
+
+                        // Append the table to a specific element in your HTML
+                        $('#responsetable1 tbody').html(tableHTML);
+
+
+                        // Initialize DataTable after rendering the table
+                        //$('#responsetable1').DataTable();
+
+                        console.log('Data sent successfully');
+                    },
+                    error: function (error) {
+                        // Code to handle the error
+                        console.error('Error occurred', error);
+                    }
+                });
+
+            });
+    })
+
+</script>

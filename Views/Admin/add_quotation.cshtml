@@ -1,0 +1,392 @@
+﻿@model macreel_setup.Models.admin.manage_quotation
+
+@{
+    ViewBag.Title = "add_quotation";
+    Layout = "~/Views/Shared/admin_mst.cshtml";
+}
+
+<link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Add/Update Quotation</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Quotation Mangement</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+
+
+
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">Add/Update Quotation</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            @*@using (Html.BeginForm("insert_quotation", "admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {*@
+                            <form id="quotationform">
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>Quotation_No</label>
+                                            <input type="text" class="form-control" placeholder="Enter Quotation_No..." name="Quotation_No" value="@Model.Quotation_No" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>Lead_Reference</label>
+                                            <input type="text" class="form-control" placeholder="Enter Lead_Reference..." id="Lead_Reference" name="Lead_Reference" value="@Model.Lead_Reference" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Client_Name</label>
+                                            <input type="text" class="form-control" placeholder="Enter Client_Name..." name="Client_Name" value="@Model.Client_Name" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>Contact_Person_No</label>
+                                            <input type="text" class="form-control" placeholder="Enter Contact_Person_No..." name="Contact_Person_No" value="@Model.Contact_Person_No" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            <input type="email" class="form-control" placeholder="Enter Email..." name="Email" value="@Model.Email" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>Company_Number</label>
+                                            <input type="text" class="form-control" placeholder="Enter Company_Number..." name="Company_Number" value="@Model.Company_Number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Address</label>
+                                            <input type="text" class="form-control" placeholder="Enter Address..." name="Address" value="@Model.Address" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>Employee</label>
+                                            <input type="text" class="form-control" id="Employee" name="Employee" placeholder="Enter Employee ...." value="@Model.Employee">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Branch</label>
+                                            <input type="text" class="form-control" placeholder="Enter Branch..." name="Branch" value="@Model.Branch">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>Select_Bill_TO</label>
+                                            <input type="text" class="form-control" placeholder="Enter  Select_Bill_TO..." name="Select_Bill_TO" value="@Model.Select_Bill_TO">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Date</label>
+                                            <input type="date" class="form-control" id="Date" name="Date" placeholder="DD/MM/YYYY" value="@Model.Date" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>PromoCode</label>
+                                            <input type="text" class="form-control" placeholder="Enter PromoCode ..." name="PromoCode" value="@Model.PromoCode">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Domain ID</label>
+                                            <input type="text" class="form-control" placeholder="Enter Domain ID..." name="DomainID" value="@Model.DomainID">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>Select_Ship_TO</label>
+                                            <input type="text" class="form-control" placeholder="Enter Select_Ship_TO..." name="Select_Ship_TO" value="@Model.Select_Ship_TO">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Add POR No</label>
+                                            <input type="text" class="form-control" placeholder="Enter Add_PORNo..." name="Add_PORNo" value="@Model.Add_PORNo">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>LAN_ID</label>
+                                            <input type="text" class="form-control" id="LAN_ID" name="LAN_ID" placeholder="Enter LAN_ID" value="@Model.LAN_ID" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>InState_OutState</label>
+                                            <input type="text" class="form-control" placeholder="Enter InState_OutState..." name="InState_OutState" value="@Model.InState_OutState">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="row">
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Tax (%)</label>
+                                            <input type="text" class="form-control" placeholder="Enter Tax..." name="Tax" value="@Model.Tax" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>TAX Amount</label>
+                                            <input type="text" class="form-control" placeholder="Enter TAX Amount..." name="TAX_Amount" value="@Model.TAX_Amount" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Price Before TAX </label>
+                                            <input type="text" class="form-control" placeholder="Enter Price Before TAX..." name="Price_Before_TAX" value="@Model.Price_Before_TAX" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Price After TAX</label>
+                                            <input type="text" class="form-control" placeholder="Enter Price After TAX..." name="Price_After_TAX" value="@Model.Price_After_TAX" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Generated Date </label>
+                                            <input type="date" class="form-control" id="Generated_Date" name="Generated_Date" placeholder="DD/MM/YYYY" value="@Model.Generated_Date" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="card-footer">
+                                    <input type="hidden" name="id" id="id" value="@Model.id" />
+                                    <button type="submit" class="btn btn-primary" id="btnquotation">Submit</button>
+                                </div>
+                          @*      }*@
+                            </form>
+
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+
+                            <h3 class="card-title float-left" style="color:ghostwhite;font-size:large">Quotation List </h3>
+                        </div>
+                        <div class="card-body">
+                            <table id="quotationtble2" class="table table-bordered table-hover justify-content-center text-center">
+                                <thead>
+                                    <tr class="bg-primary">
+                                      
+                                        <th>Quotation_No</th>
+                                        <th>Lead_Reference</th>
+                                        <th>Client_Name</th>
+                                        <th>Contact_Person_No</th>
+                                        <th>Email</th>
+                                        <th>Company_Number</th>
+                                        <th>Address</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- /.container-fluid -->
+    </section>
+
+
+
+</div>
+
+
+<script>
+    $('#quotationtble2').DataTable();
+
+
+    $(document).ready(function () {
+        var currentdate = moment(new Date()).format("YYYY-MM-DD");
+        $('#Generated_Date').val(currentdate);
+        var LeadReference = $('#Lead_Reference').val();
+
+        $.ajax({
+            type: 'Get',
+            url: '/admin/allquotationbyLeadRefernce?leadId=' + LeadReference,
+            success: function (data) {
+                var tableHTML = '';
+
+                $.each(data, function (index, item) {
+                    tableHTML += '<tr>';
+                    tableHTML += '<td>' + item.Quotation_No + '</td>';
+                    tableHTML += '<td>' + item.Lead_Reference + '</td>';
+                    tableHTML += '<td>' + item.Client_Name + '</td>';
+                    tableHTML += '<td>' + item.Contact_Person_No + '</td>';
+                    tableHTML += '<td>' + item.Email + '</td>';
+                    tableHTML += '<td>' + item.Company_Number + '</td>';
+                    tableHTML += '<td>' + item.Address + '</td>';
+
+                    tableHTML += '</tr>';
+                });
+
+
+                $('#quotationtble2 tbody').html(tableHTML);
+
+
+
+            },
+            error: function (error) {
+                // Code to handle the error
+                console.error('Error occurred', error);
+            }
+        });
+
+        $('#btnquotation').on('click', function (ev) {
+            ev.preventDefault();
+
+            var formData = $('#quotationform').serializeArray();
+
+
+            $.ajax({
+                type: 'POST',
+                url: '/admin/insert_quotation', // Replace 'your_url_here' with the actual URL you want to send the data to
+                data: formData,
+                success: function (data) {
+
+                    var tableHTML = '';
+
+                    $.each(data, function (index, item) {
+                        tableHTML += '<tr>';
+                        tableHTML += '<td>' + item.Quotation_No + '</td>';
+                        tableHTML += '<td>' + item.Lead_Reference + '</td>';
+                        tableHTML += '<td>' + item.Client_Name + '</td>';
+                        tableHTML += '<td>' + item.Contact_Person_No + '</td>';
+                        tableHTML += '<td>' + item.Email + '</td>';
+                        tableHTML += '<td>' + item.Company_Number + '</td>';
+                        tableHTML += '<td>' + item.Address + '</td>';
+
+                        tableHTML += '</tr>';
+                    });
+
+
+                    $('#quotationtble2 tbody').html(tableHTML);
+                    setTimeout(function () {
+
+                        location.reload();
+
+                    }, 2000);
+
+                },
+                error: function (error) {
+                    // Code to handle the error
+                    console.error('Error occurred', error);
+                }
+            });
+
+
+        });
+
+
+    });
+
+</script>

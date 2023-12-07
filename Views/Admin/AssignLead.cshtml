@@ -1,0 +1,277 @@
+﻿@model List<macreel_setup.Models.admin.manage_leadsheet>
+
+@{
+    ViewBag.Title = "AssignLead";
+    Layout = "~/Views/Shared/admin_mst.cshtml";
+}
+
+<link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+
+<script src="https://code.jquery.com/jquery-3.7.0.js" type="text/javascript"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="https://cdn.datatables.net/select/1.7.0/js/dataTables.select.min.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+
+
+<style>
+
+    .error {
+      color:red;
+      font-size :18px;
+    }
+
+</style>
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Lead List</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Lead List</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+
+    <section class="content">
+        <div class="container-fluid">
+
+            @*@using (Html.BeginForm("AssignLeadTo", "Admin", FormMethod.Post, new { id = "AssignForm" }))
+        {*@
+
+            <form id="AssignForm" method="POST">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+
+                                <h3 class="card-title float-right">Lead List </h3>
+                            </div>
+
+
+                            <div class="card-body ">
+                                <div class="row">
+                                    <label class="col-sm-2 col-form-label">Employee Name</label>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <select class="form-control sn-required" name="agentId">
+                                                <option value="">--Select Agent--</option>
+                                                @if (ViewBag.AgentList != null)
+                                                {
+                                                    foreach (var item in ViewBag.AgentList as List<SelectListItem>)
+                                                    {
+                                                        <option value="@item.Value">@item.Text</option>
+                                                    }
+                                                }
+                                            </select>
+                                            <span class="agentError erorr" style="color:red"></span>
+                                        </div>
+                                    </div>
+                                  
+                                </div>
+                            </div>
+
+
+
+                            <div class="card-body">
+
+                                <span class="leadError erorr" style="color:red"></span>
+                                <table id="leadlisttable" class="display" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr class="bg-info">
+                                            <th><input type="checkbox" name="select_all" value="1" id="example-select-all"></th>
+                                            <th>Client Name</th>
+                                            <th>Contact No</th>
+                                            <th>Email</th>
+                                            <th>Address</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tfoot>
+
+                                    </tfoot>
+                                </table>
+
+
+                            </div>
+
+
+                            <div class="card-body ">
+                                <div class="row">
+                                    <div class="col-sm-4">
+
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="card-footer text-center">
+                                            <button type="button" class="btn btn-primary" id="btnAssign">Assign</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </form>
+
+
+            @*  }*@
+
+
+        </div>
+
+
+        <!-- /.container-fluid -->
+    </section>
+
+
+
+</div>
+
+@* <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
+
+<script>
+    $(document).ready(function () {
+        new DataTable('#leadlisttable', {
+            ajax: {
+                url: '/admin/AllLeadJson',
+                dataSrc: 'leadlistData',
+            },
+            deferRender: true,
+            columns: [
+                { data: 'id' },
+                { data: 'client_name' },
+                { data: 'contact_no' },
+                { data: 'eMAIL_ID' },
+                { data: 'address' },
+
+            ],
+            columnDefs: [
+                {
+                    targets: 0,
+                    data: null,
+                    defaultContent: '',
+                    orderable: false,
+                    className: 'select-checkbox',
+                    'render': function (data, type, full, meta) {
+                        return '<input type="checkbox" name="AssignLead_Id[]"  value="' + $('<td/>').text(data).html() + '">';
+                    }
+                }
+            ],
+
+
+        });
+
+
+
+        $('#example-select-all').on('click', function () {
+            if (this.checked)
+            {
+                $('input[type="checkbox"]').each(function () {
+                    this.checked = true;
+                });
+            }
+            else {
+                $('input[type="checkbox"]').each(function () {
+                    this.checked = false;
+                });
+            }
+        });
+
+
+
+
+        $(document).on('click', 'input[type="checkbox"]', function () {
+
+            if ($('#leadlisttable tbody input[type="checkbox"]:checked').length == $('#leadlisttable tbody input[type="checkbox"]').length) {
+                $('#example-select-all').prop('checked', true);
+            } else {
+                $('#example-select-all').prop('checked', false);
+            }
+        });
+
+
+
+
+
+        $("#btnAssign").click(function (ev) {
+            ev.preventDefault();
+            // $("#userloginform").validate();
+
+                var agentId = $('select[name="agentId"]').val();
+                if (agentId == '' || agentId == undefined) {
+                    $('.agentError').html('Please select agent');
+                    return false;
+                } else {
+                    $('.agentError').html('');
+                }
+                
+                var selectRows = [];
+                $('#leadlisttable tbody input[type="checkbox"]:checked').each(function () {
+                    if ($(this).is(':checked')) {
+                        selectRows.push($(this).val());
+                    }
+                });
+
+                if (selectRows.length < 1) {
+                    $('.leadError').html('Please select atleast one row');
+                    return false;
+                } else {
+                    $('.leadError').html('');
+            }
+
+
+
+            var postData = new Array();
+             postData['agentId'] = agentId;
+            postData['AssignLead_Id'] = selectRows;
+                
+            console.log(postData);
+
+
+
+           // var assigObj = 'aaa';
+            var agentId = agentId;
+           // var leadIdvalue = selectRows;
+        
+            $.ajax({
+                url: '/admin/AssignLeadTo/',
+               // data: { 'assigObj': postData },
+                data: JSON.stringify({ agentId: '' + agentId + '', selectRows: '' + selectRows +'' }),
+
+                    type: 'POST',
+                    contentType: "application/json; charset=utf-8",  
+                    success: function (data) {
+                       // console.log(data);
+
+                    },
+                    error: function (request, error) {
+                        alert("something error occure");
+
+
+
+                    }
+                }); 
+            
+        });
+
+
+    });
+
+</script>

@@ -1,0 +1,281 @@
+﻿@model macreel_setup.Models.admin.lead_mangement
+
+@{
+    ViewBag.Title = "viewAssignedLeadByLeadId";
+    Layout = "~/Views/Shared/admin_mst.cshtml";
+}
+
+
+<style>
+    label {
+        color: #3391b7;
+    }
+</style>
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Lead Mangement</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Lead Mangement</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Lead Mangement Field</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+
+                        <form>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="">Lead Id:-</label>
+                                            <input type="text" class="form-control" id="LeadID" name="LeadID"  value="@Model.LeadID" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="">Lead Segment:-</label>
+                                            <input type="text" class="form-control" id="LeadSegment" name="LeadSegment" value="@Model.LeadSegment" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="">Branch:-</label>
+                                            <input type="text" class="form-control" id="Branch" name="Branch"  value="@Model.Branch" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                        
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Client Segment:-</label>
+                                                <input type="text" class="form-control"  value="@Model.ClientSegment" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="">Contact Person:-</label>
+                                            <input type="text" class="form-control"  value="@Model.ContactPerson" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="">Contact Designation:-</label>
+                                            <input type="text" class="form-control" value="@Model.ContactDesignation" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="">Contact Mobile Number:-</label>
+                                            <input type="text" class="form-control"  value="@Model.ContactMobileNumber" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="">Contact Email:-</label>
+                                            <input type="text" class="form-control" value="@Model.ContactEmail" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="">Country:-</label>
+                                            <span class="form-control">@Model.Country</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="">State:-</label>
+                                            <span class="form-control">@Model.State</span>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="">City:-</label>
+                                            <span class="form-control">@Model.City</span>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="">Area PIN:-</label>
+                                            <input type="text" class="form-control"value="@Model.PIN" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="">Address:-</label>
+                                            <textarea class="form-control"  readonly>@Model.Address</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="">Client Segment:-</label>
+                                            <input type="text" class="form-control"  value="@Model.ClientSegment" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="">Client Turnover:-</label>
+                                            <input type="text" class="form-control"value="@Model.ClientTurnover" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="">Client PCs/ No Of Employee:-</label>
+                                            <input type="text" class="form-control" value="@Model.ClientPCsOrNoOfEmployee" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="">Expected Annual Business:-</label>
+                                            <input type="text" class="form-control"  value="@Model.ExpectedAnnualBusiness" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="">Product Required:-</label>
+                                            <input type="text" class="form-control" value="@Model.ProductRequired" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="">Product Quantity:-</label>
+                                            <input type="text" class="form-control" value="@Model.ProductQuantity" readonly>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="">Product Description:-</label>
+                                            <textarea class="form-control"  readonly>@Model.ProductDescription</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="">Service Required:-</label>
+                                            <input type="text" class="form-control"  value="@Model.ServiceRequired" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <label for="">Services Description:-</label>
+                                            <textarea class="form-control" readonly>@Model.ServicesDescription</textarea>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="">Estimated Lead Value:-</label>
+                                            <input type="text" class="form-control"  value="@Model.EstimatedLeadValue" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="">Lead Generated By:-</label>
+                                            <span class="form-control">@Model.LeadGeneratedBy</span>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="">Lead Generated By Type:-</label>
+                                            <input type="text" class="form-control" value="@Model.LeadGeneratedByType" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="">Lead Generation Date:-</label>
+                                            <input type="date" class="form-control"  value="@Model.LeadGenerationDate" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="">Lead Assigned To:-</label>
+                                            <span class="form-control">@Model.employee_first_name</span>
+
+                                        </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Lead Status:-</label>
+                                                <input type="text" class="form-control" value="@Model.LeadStatus" readonly>
+                                            </div>
+                                        </div>
+                                </div>
+
+
+                            </div>
+                            <!-- /.card-body -->
+
+
+
+                    </div>
+                    <!-- /.card -->
+
+
+                </div>
+                <!--/.col (left) -->
+            </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+
+
+

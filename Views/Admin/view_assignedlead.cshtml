@@ -1,0 +1,395 @@
+﻿@model List<macreel_setup.Models.admin.lead_mangement>
+@{
+    ViewBag.Title = "view_assignedlead";
+    Layout = "~/Views/Shared/admin_mst.cshtml";
+}
+
+
+<link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+<script src="https://code.jquery.com/jquery-3.7.0.js" type="text/javascript"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js" type="text/javascript"></script>
+
+<script src="https://cdn.datatables.net/select/1.7.0/js/dataTables.select.min.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+
+
+<style>
+
+    .error {
+        color: red;
+        font-size: 18px;
+    }
+
+    .hidden {
+        display: none;
+    }
+</style>
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1> View Lead List</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active"> Assignend Lead List</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+
+    <section class="content" id="assignleadlist">
+        <div class="container-fluid">
+
+            <form id="agentleadresponseform" method="POST">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+
+                                <h3 class="card-title float-right"> Assign Lead List </h3>
+                            </div>
+
+
+                            <div class="card-body">
+
+                                <span class="leadError erorr" style="color:red"></span>
+                                <table id="leadlisttable" class="display" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr class="bg-info">
+                                            <th>Sr.No.</th>
+                                            <th>Client Name</th>
+                                            <th>Contact No</th>
+                                            <th>Email</th>
+                                            <th>Address</th>
+                                            <th class="hidden"></th>
+                                            <th class="hidden"></th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        @{
+                                            int i = 1;
+                                            foreach (var item in Model)
+                                            {
+
+                                                <tr>
+                                                    <td>@i</td>
+                                                    <td class="contactperson">@item.ContactPerson</td>
+                                                    <td class="mobno">@item.ContactMobileNumber</td>
+                                                    <td class="email">@item.ContactEmail</td>
+                                                    <td class="address">@item.Address</td>
+                                                    <td class="hidden">@item.LeadID</td>
+                                                    <td class="hidden">@item.LeadAssignedTo</td>
+                                                    @if (item.LeadStatus == "1")
+                                                    {
+                                                        <td><a href="/admin/viewleaddeatailById?leadId=@(item.LeadID)" class="btn btn-sm showdetail"><i class="fas fa-eye"></i></a>||<a href="/admin/add_quotation?leadId=@(item.LeadID)"><span class="btn btn-success PO">Quotation </span></a> </td>
+
+
+
+
+                                                    }
+                                                    else
+                                                    {
+                                                        <td><a href="/admin/viewleaddeatailById?leadId=@(item.LeadID)" class="btn btn-sm showdetail"><i class="fas fa-eye"></i></a>||<a href="/admin/FollowUpLeadResponse?leadId=@(item.LeadID)"><span class="followup"> <i class="fa fa-rocket" aria-hidden="true"></i></span></a>|| <span class="transferToReportManager"> <i class="fa fa-share-square" aria-hidden="true"></i></span> </td>
+
+                                                    }
+                                                </tr>
+                                                i++;
+                                            }
+                                        }
+                                    </tbody>
+
+                                    <tfoot>
+
+                                    </tfoot>
+                                </table>
+
+
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </form>
+
+
+
+
+        </div>
+
+
+        <!-- /.container-fluid -->
+    </section>
+
+    <!-- view details modal -->
+
+    <div class="modal" id="showleaddetailsModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">lead Details</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table id="detailstable" class="table">
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</div>
+
+
+
+<div class="modal" id="assigntransferModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">transfer to report manager</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+
+                <form id="assigntransferform">
+
+                    @*<div class="row">
+                            <label class="col-sm-4 col-form-label">Report Manager</label>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <span> @Session["managername"].ToString()</span>
+                                </div>
+
+                            </div>
+                        </div>*@
+                    <div class="row">
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+
+                                @*  <input type="hidden" id="rpmId" name="rpmId" value="@Session["managerId"]" />*@
+                                <input type="hidden" id="LeadId" name="LeadId" />
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="card-body ">
+                        <div class="row">
+                            <label class="col-sm-2 col-form-label">Employee Name</label>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <select class="form-control sn-required" name="employee_id">
+                                        <option value="">--Select Agent--</option>
+                                        @if (ViewBag.ReAssigemploye_list != null)
+                                        {
+                                            foreach (var item in ViewBag.ReAssigemploye_list as List<macreel_setup.Models.admin.employe_list>)
+                                            {
+                                                <option value="@item.employee_id">@item.name</option>
+                                            }
+                                        }
+                                    </select>
+                                    <span class="agentError erorr" style="color:red"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div class="form-group">
+
+                                <button type="submit" class="btn btn-sm btn-primary" id="btnassigntransfer">transfer</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+@* <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
+
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js" type="text/javascript"></script>
+
+
+
+<script>
+
+    $('#leadlisttable').DataTable({
+
+    });
+
+
+</script>
+
+<script>
+
+    $(document).ready(function () {
+
+        $(document).on('click', 'table#leadlisttable tbody tr td .transferToReportManager', function () {
+
+            // $('#myModal').modal({ show: true });
+            //console.log('shdkfh');
+
+            var currentRow = $(this).closest("tr");
+
+            var clientName = currentRow.find("td:eq(0)").html();
+            var LeadId = currentRow.find("td:eq(5)").html();
+            $('#LeadId').val(LeadId);
+
+            $('#assigntransferModal').modal('show');
+
+
+            $('#btnassigntransfer').on('click', function (e) {
+                e.preventDefault(e); // Prevent the form from submitting in the default way
+
+
+
+                var employee_id = $('select[name="employee_id"]').val();
+                if (employee_id == '' || employee_id == undefined) {
+                    $('.agentError').html('Please select employee');
+                    return false;
+                } else {
+                    $('.agentError').html('');
+                }
+
+                var formData = {
+                    employee_id: employee_id,
+                    LeadId: $('#LeadId').val(),
+                };
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/admin/TransferAssignLead/',
+                    data: formData,
+                    success: function (data) {
+                        //  $('#assigntransferModal').modal('hide');
+
+                        // alert('transfered successfully');
+                        setTimeout(location.reload.bind(location), 1);
+
+
+                        console.log('Data sent successfully');
+                    },
+                    error: function (error) {
+                        // Code to handle the error
+                        console.error('Error occurred', error);
+                    }
+                });
+
+            });
+
+
+
+
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+<script>
+   
+    $(document).ready(function () {
+
+
+        // $('#showquotdetailsModal').modal('show');
+
+
+        $('.showdetail').on('click', function (ev) {
+            ev.preventDefault();
+            var url = $(this).attr("href");
+            $.ajax({
+                type: 'Get',
+                url: url,
+                success: function (data) {
+                    //alert(JSON.stringify(data));
+                    //  console.log(data);
+
+                    var tableHTML = '';
+
+                    $.each(data, function (index, item) {
+                        // alert(index);
+                        if (index != 'id' && index != 'employee_first_name' && index != 'countrylist' && index != 'employe_list' && index != 'LeadStatus' && index != 'LeadAssignedTo' && index != 'Client') {
+                            tableHTML += '<tr>';
+                            tableHTML += '<th>' + index.replace(/#|_/g, ' ') + ': </th>';
+                            tableHTML += '<td>' + item + '</td>';
+                            tableHTML += '</tr>';
+                        }
+                    });
+
+                    $('#detailstable').html(tableHTML);
+
+                    $('#showleaddetailsModal').modal('show');
+
+                },
+                error: function (error) {
+                    // Code to handle the error
+                    console.error('Error occurred', error);
+                }
+            });
+
+            // alert(action);
+        });
+    });
+
+</script>

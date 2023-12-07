@@ -1,0 +1,172 @@
+﻿@model List<macreel_setup.Models.admin.manage_quotation>
+
+@{
+    ViewBag.Title = "view_quotation";
+    Layout = "~/Views/Shared/admin_mst.cshtml";
+}
+
+<link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>View Quotation List</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Quotation List</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+
+                            <h3 class="card-title float-right">Quotation List </h3>
+                        </div>
+                        <div class="card-body">
+                            <table id="quotationtble" class="table table-bordered table-hover justify-content-center text-center">
+                                <thead>
+                                    <tr class="bg-primary">
+                                        <th>Sr.No.</th>
+                                        <th>Quotation_No</th>
+                                        <th>Lead_Reference</th>
+                                        <th>Client_Name</th>
+                                        <th>Contact_Person_No</th>
+                                        <th>Email</th>
+                                        <th>Company_Number</th>
+                                        <th>Address</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        int i = 1;
+                                        foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>@i</td>
+                                                <td>@item.Quotation_No</td>
+                                                <td>@item.Lead_Reference</td>
+                                                <td>@item.Client_Name</td>
+                                                <td>@item.Contact_Person_No</td>
+                                                <td>@item.Email</td>
+                                                <td>@item.Company_Number</td>
+                                                <td>@item.Address</td>
+                                                <td><a href="/admin/view_quotationdeatailsbyId?id=@(item.id)" class="btn btn-sm showdetail"><i class="fas fa-eye"></i></a>||<a href="/admin/add_quotation?id=@(item.id)"><i class="fas fa-edit"></i></a> || <a href="/admin/delet_quotation?id=@(item.id)"> <i class="fas fa-solid fa-trash"></i></a>||<a href="/admin/add_quotation?leadId=@(item.Lead_Reference)"><span class="requotation"> <i class="fa fa-rocket" aria-hidden="true"></i></span></a></td>
+                                            </tr>
+                                            i++;
+                                        }
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- /.container-fluid -->
+    </section>
+
+
+    <div class="modal" id="showquotdetailsModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Quotation Details</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table id="detailstable" class="table">
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+
+<script>
+    $('#quotationtble').DataTable();
+    $(document).ready(function () {
+
+
+        // $('#showquotdetailsModal').modal('show');
+
+
+        $('.showdetail').on('click', function (ev) {
+            ev.preventDefault();
+            var url = $(this).attr("href");
+            $.ajax({
+                type: 'Get',
+                url: url,
+                success: function (data) {
+                    //alert(JSON.stringify(data));
+                    //  console.log(data);
+
+                        var tableHTML = '';
+
+                        $.each(data, function (index, item) {
+                            // alert(index);
+                            if (index != 'id' && index != 'Lead_Reference' && index !='GeneratedBy') {
+                                tableHTML += '<tr>';
+                                tableHTML += '<th>' + index.replace(/#|_/g,' ') + ': </th>';
+                                tableHTML += '<td>' + item + '</td>';
+                                tableHTML += '</tr>';
+                            }
+                        });
+
+                      $('#detailstable').html(tableHTML);
+
+                      $('#showquotdetailsModal').modal('show');
+
+                },
+                error: function (error) {
+                    // Code to handle the error
+                    console.error('Error occurred', error);
+                }
+            });
+
+            // alert(action);
+        });
+    });
+
+</script>

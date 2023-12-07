@@ -1,0 +1,852 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Macreel Setup | Dashboard</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/adminassets/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="~/adminassets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/adminassets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="~/adminassets/plugins/jqvmap/jqvmap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/adminassets/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="~/adminassets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="~/adminassets/plugins/daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="~/adminassets/plugins/summernote/summernote-bs4.min.css">
+
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://jeremyfagis.github.io/dropify/dist/js/dropify.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://jeremyfagis.github.io/dropify/dist/css/dropify.min.css">
+
+
+
+
+
+
+
+
+
+    <style>
+        .sidebar-dark-primary {
+            background-color: #1a3e48;
+        }
+
+        .card-header {
+            background-color: #1a3e48;
+        }
+
+        .btn-primary {
+            background-color: #1a3e48;
+            border-color: #1a3e48;
+            font-weight: bolder;
+            width: 200px;
+            height: 50px;
+        }
+
+        .card-footer {
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+
+        <!-- Preloader -->
+        <div class="preloader flex-column justify-content-center align-items-center">
+            @* <img class="animation__shake" src="~/adminassets/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">*@
+        </div>
+
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="index3.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="#" class="nav-link">Contact</a>
+                </li>
+            </ul>
+
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <!-- Navbar Search -->
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <div class="navbar-search-block">
+                        <form class="form-inline">
+                            <div class="input-group input-group-sm">
+                                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                                <div class="input-group-append">
+                                    <button class="btn btn-navbar" type="submit">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                    <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+
+                <!-- Messages Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="far fa-comments"></i>
+                        <span class="badge badge-danger navbar-badge">3</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <a href="#" class="dropdown-item">
+                            <!-- Message Start -->
+                            <div class="media">
+                                <img src="~/adminassets/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                                <div class="media-body">
+                                    <h3 class="dropdown-item-title">
+                                        Brad Diesel
+                                        <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                                    </h3>
+                                    <p class="text-sm">Call me whenever you can...</p>
+                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                                </div>
+                            </div>
+                            <!-- Message End -->
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <!-- Message Start -->
+                            <div class="media">
+                                <img src="~/adminassets/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                                <div class="media-body">
+                                    <h3 class="dropdown-item-title">
+                                        John Pierce
+                                        <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                                    </h3>
+                                    <p class="text-sm">I got your message bro</p>
+                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                                </div>
+                            </div>
+                            <!-- Message End -->
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <!-- Message Start -->
+                            <div class="media">
+                                <img src="~/adminassets/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                                <div class="media-body">
+                                    <h3 class="dropdown-item-title">
+                                        Nora Silvester
+                                        <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
+                                    </h3>
+                                    <p class="text-sm">The subject goes here</p>
+                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                                </div>
+                            </div>
+                            <!-- Message End -->
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+                    </div>
+
+                </li>
+                <!-- Notifications Dropdown Menu -->
+                <li class="nav-item dropdown">
+
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="far fa-bell"></i>
+                      @*  <span class="badge badge-warning navbar-badge">@ViewBag.todayfollowupsCount</span>*@
+                 @*   <span class="badge badge-warning navbar-badge">@ViewBag.todayfollowupsCount</span>*@
+                  <span class="badge badge-warning navbar-badge" id="nextfollowNotification"></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        @*<span class="dropdown-item dropdown-header">15 Notifications</span>*@
+                        <div class="dropdown-divider"></div>
+                        <ul id="todayfollowuplist"></ul>
+                        @*<ul>
+                            @foreach (var todayfollowup in ViewBag.todayfollowuplist as List<macreel_setup.Models.admin.manage_folloupLeadResponse>)
+                            {
+
+
+
+                                <li>
+                                    <a href="/admin/FollowUpLeadResponse?id=@todayfollowup.LeadId" class="dropdown-item">
+                                        @todayfollowup.response
+                                      
+                                    </a>
+                                </li>
+                            }
+                        </ul>*@
+
+                        @*<a href="#" class="dropdown-item">
+                            <i class="fas fa-envelope mr-2"></i> 4 new messages
+                            <span class="float-right text-muted text-sm">3 mins</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-users mr-2"></i> 8 friend requests
+                            <span class="float-right text-muted text-sm">12 hours</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-file mr-2"></i> 3 new reports
+                            <span class="float-right text-muted text-sm">2 days</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>*@
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
+                        <i class="fas fa-th-large"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="index3.html" class="brand-link">
+                @*<img src="~/adminassets/img/" alt="logo" class="brand-image img-circle elevation-3" style="opacity: .8">*@
+                <span class="brand-text font-weight-light">Macreel Setup</span>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="~/adminassets/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                    </div>
+                    <div class="info">
+                        <p1 class="d-block">@Session["usertype"]</p1>
+                        <a href="#" class="d-block">@Session["username"]</a>
+                    </div>
+                </div>
+
+                <!-- SidebarSearch Form -->
+                @*<div class="form-inline">
+                        <div class="input-group" data-widget="sidebar-search">
+                            <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                            <div class="input-group-append">
+                                <button class="btn btn-sidebar">
+                                    <i class="fas fa-search fa-fw"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>*@
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+    with font-awesome or any other icon font library -->
+                        @if (Session["usertype"].ToString() == "admin")
+                        {
+
+
+                            <li class="nav-item">
+                                <a href="/admin/Dasboard " class="nav-link">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Dashboard
+
+                                    </p>
+                                </a>
+                            </li>
+                            @*<li class="nav-item">
+                <a href="pages/widgets.html" class="nav-link">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>
+                        Widgets
+                        <span class="right badge badge-danger">New</span>
+                    </p>
+                </a>
+            </li>*@
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-copy"></i>
+                                    <p>
+                                        Employee Management
+                                        <i class="fas fa-angle-left right"></i>
+                                        @*<span class="badge badge-info right">6</span>*@
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="/admin/employee_management" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Add Employee</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/admin/view_employee" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>View Employee</p>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-copy"></i>
+                                    <p>
+                                        Branch Management
+                                        <i class="fas fa-angle-left right"></i>
+                                        @*<span class="badge badge-info right">6</span>*@
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="/admin/branch_management" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Add Branch</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/admin/view_branch" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>View Branch</p>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-copy"></i>
+                                    <p>
+                                        Lead Management
+                                        <i class="fas fa-angle-left right"></i>
+                                        @*<span class="badge badge-info right">6</span>*@
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    @*<li class="nav-item">
+                                        <a href="/admin/lead_management" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Add Lead</p>
+                                        </a>
+                                    </li>*@
+                                    <li class="nav-item">
+                                        <a href="/admin/view_lead" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>View Lead</p>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-copy"></i>
+                                    <p>
+                                        Leave Management
+                                        <i class="fas fa-angle-left right"></i>
+                                        @*<span class="badge badge-info right">6</span>*@
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="/admin/manage_leave" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Add Leave</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/admin/view_leave" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>View Leave</p>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-edit"></i>
+                                    <p>
+                                        sub admin manager
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="/admin/add_subadmin" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>add_subadmin</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/admin/view_subadmin" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>view_subadmin</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-edit"></i>
+                                    <p>
+                                        sequence manager
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="/admin/add_sequence" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>add_sequence</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/admin/view_sequence" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>view_sequence</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-edit"></i>
+                                    <p>
+                                        Product Manager
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="/admin/add_product" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>add_product</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/admin/view_product" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>view_product</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-edit"></i>
+                                    <p>
+                                        Vendor Manager
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="/admin/add_vendor" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>add_vendor</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/admin/view_vendor" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>view_vendor</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-edit"></i>
+                                    <p>
+                                        Sale Book Manager
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="/admin/add_salebook" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>add_salebook</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/admin/view_salebook" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>view_salebook</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-edit"></i>
+                                    <p>
+                                        PI Manager
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="/admin/add_pi" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>add_pi</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/admin/view_pi" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>view_pi</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-edit"></i>
+                                    <p>
+                                        PO Manager
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="/admin/add_po" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>add_po</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/admin/view_po" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>view_po</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-edit"></i>
+                                    <p>
+                                        Quotation Manager
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    @*<li class="nav-item">
+                                        <a href="/admin/add_quotation" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>add_quotation</p>
+                                        </a>
+                                    </li>*@
+                                    <li class="nav-item">
+                                        <a href="/admin/view_quotation" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>view_quotation</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-edit"></i>
+                                    <p>
+                                        Sales Manage
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="/admin/addleadsheet" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Upload LeadSheet</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/admin/viewleadsheetlist" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>view leadsheet list</p>
+                                        </a>
+                                    </li>
+                                    @*<li class="nav-item">
+                        <a href="/admin/addLeadManualyBySalesMan" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Add  Lead Manualy</p>
+                        </a>
+                    </li>*@
+                                    <li class="nav-item">
+                                        <a href="/admin/AssignLead" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Assign Lead</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                        @if (@Session["usertype"].ToString() == "sales")
+                        {
+
+                            <li class="nav-item">
+                                <a href="/admin/sale_dashboard " class="nav-link">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Dashboard
+
+                                    </p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-edit"></i>
+                                    <p>
+                                        Lead Management
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+
+                                    @*<li class="nav-item">
+                                        <a href="/admin/lead_management" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Add Lead</p>
+                                        </a>
+                                    </li>*@
+                                    <li class="nav-item">
+                                        <a href="/admin/view_lead" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>View Lead</p>
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a href="/admin/addleadsheet" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Upload LeadSheet</p>
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a href="/admin/viewleadsheetlist" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>view leadsheet list</p>
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a href="/admin/AssignLead" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Assign Lead</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/admin/showAssignedLeadBySales" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>view assigned lead</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+
+
+
+                        }
+
+
+
+                        @if (@Session["usertype"].ToString() == "agent")
+                        {
+                            <li class="nav-item">
+                                <a href="/admin/agent_dashboard " class="nav-link">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Dashboard
+
+                                    </p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-edit"></i>
+                                    <p>
+                                        Lead Management
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="/admin/view_assignedlead" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>View Assigned Lead</p>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-edit"></i>
+                                    <p>
+                                        Quotation Manager
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    @*<li class="nav-item">
+                        <a href="/admin/add_quotation" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>add_quotation</p>
+                        </a>
+                    </li>*@
+                                    <li class="nav-item">
+                                        <a href="/admin/view_quotation" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>view_quotation</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        }
+
+                        <li class="nav-item">
+                            <a href="/admin/logout" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>LOGOUT</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        @RenderBody()
+
+
+
+
+        <!-- datatable js cdn link -->
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <strong>Copyright &copy; 2014-2023 <a href="#">Macreel Info.io</a>.</strong>
+            All rights reserved.
+            <div class="float-right d-none d-sm-inline-block">
+                <b>Version</b> 3.2.0
+            </div>
+        </footer>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <!-- <script src="~/adminassets/plugins/jquery/jquery.min.js"></script> -->
+    <!-- jQuery UI 1.11.4 -->
+    <script src="~/adminassets/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="~/adminassets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- ChartJS -->
+    <script src="~/adminassets/plugins/chart.js/Chart.min.js"></script>
+    <!-- Sparkline -->
+    <script src="~/adminassets/plugins/sparklines/sparkline.js"></script>
+    <!-- JQVMap -->
+    <script src="~/adminassets/plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="~/adminassets/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="~/adminassets/plugins/jquery-knob/jquery.knob.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="~/adminassets/plugins/moment/moment.min.js"></script>
+    <script src="~/adminassets/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="~/adminassets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Summernote -->
+    <script src="~/adminassets/plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="~/adminassets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/adminassets/js/adminlte.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/adminassets/js/demo.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="~/adminassets/js/pages/dashboard.js"></script>
+
+
+    <script>
+        $.ajax({
+            type: 'GET',
+            url: '/admin/next_followup_responseNotification/',
+            success: function (data) {
+                
+                var todayfollowuplist = $('#todayfollowuplist');
+
+                todayfollowuplist.empty();
+                var noticount = data.notificationCount;
+                $('#nextfollowNotification').html(noticount);
+
+                data.todayfollowup.forEach(function (item) {
+                    todayfollowuplist.append('<li>   <a href="/admin/FollowUpLeadResponse?leadId='+item.LeadId+'&resId='+item.id+'" class="dropdown-item">' + item.response + '</a></li>'); // Assuming each item has a 'name' property
+                });
+
+               // console.log('Data sent successfully');
+            },
+            error: function (error) {
+                // Code to handle the error
+                console.error('Error occurred', error);
+            }
+        });
+
+    </script>
+
+</body>
+</html>
+

@@ -1,0 +1,207 @@
+﻿@model macreel_setup.Models.admin.manage_leave
+@{
+    ViewBag.Title = "manage_leave";
+    Layout = "~/Views/Shared/admin_mst.cshtml";
+}
+
+<style>
+    label {
+        color: #3391b7;
+    }
+</style>
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Leave Mangement</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Leave Mangement</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Leave Mangement Field</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        @using (Html.BeginForm("insert_leave", "admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            <form>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Employee Id:-</label>
+                                                <input type="text" class="form-control" id="Employeeid" name="Employeeid" placeholder="Enter Employee Id" value="@Model.Employeeid" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Employee Type:-</label>
+                                                <input type="text" class="form-control" id="EmployeeType" name="EmployeeType" placeholder="Enter Employee Type" value="@Model.EmployeeType" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="">Department:-</label>
+                                                <input type="text" class="form-control" id="Department" name="Department" placeholder="Enter Department" value="@Model.Department" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="">Earned Leave or Privilege Leave:-</label>
+                                                <input type="text" class="form-control" id="EarnedOrPrivilegeLeave" name="EarnedOrPrivilegeLeave" placeholder="Enter Earned Or Privilege Leave" value="@Model.EarnedOrPrivilegeLeave" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="">Earned Leave or Privilege Leave Used:-</label>
+                                                <input type="text" class="form-control" id="EarnedOrPrivilegeLeaveUsed" name="EarnedOrPrivilegeLeaveUsed" placeholder="Enter Earned Or Privilege Leave Used" value="@Model.EarnedOrPrivilegeLeaveUsed" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="">Casual Leave:-</label>
+                                                <input type="text" class="form-control" id="CasualLeave" name="CasualLeave" placeholder="Enter Casual Leave" value="@Model.CasualLeave" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="">Casual Leave Used:-</label>
+                                                <input type="text" class="form-control" id="CasualLeaveUsed" name="CasualLeaveUsed" placeholder="Enter Casual Leave Used" value="@Model.CasualLeaveUsed" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="">Sick or Medical Leave:-</label>
+                                                <input type="text" class="form-control" id="SickOrMedicalLeave" name="SickOrMedicalLeave" placeholder="Enter Sick Or Medical Leave" value="@Model.SickOrMedicalLeave" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="">Sick or Medical Leave Used:-</label>
+                                                <input type="text" class="form-control" id="SickOrMedicalLeaveUsed" name="SickOrMedicalLeaveUsed" placeholder="Enter Sick Or Medical Leave Used" value="@Model.SickOrMedicalLeaveUsed" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="">Maternity Leave:-</label>
+                                                <input type="text" class="form-control" id="MaternityLeave" name="MaternityLeave" placeholder="Enter Maternity Leave" value="@Model.MaternityLeave" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="">Maternity Leave Used:-</label>
+                                                <input type="text" class="form-control" id="MaternityLeaveUsed" name="MaternityLeaveUsed" placeholder="Enter Maternity Leave Used" value="@Model.MaternityLeaveUsed" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="">Quarantine Leave:-</label>
+                                                <input type="text" class="form-control" id="LeadID" name="LeadID" placeholder="Enter Quarantine Leave" value="@Model.QuarantineLeave" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="">Quarantine Leave Used:-</label>
+                                                <input type="text" class="form-control" id="QuarantineLeaveUsed" name="QuarantineLeaveUsed" placeholder="Enter Quarantine Leave Used" value="@Model.QuarantineLeaveUsed" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="">Session Start From:-</label>
+                                                <input type="date" class="form-control" id="SessionStartFrom" name="SessionStartFrom" value="@Model.SessionStartFrom" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="">Session End To:-</label>
+                                                <input type="date" class="form-control" id="SessionEndTo" name="SessionEndTo" value="@Model.SessionEndTo" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label for="">Status:-</label>
+                                                <input type="text" class="form-control" id="Status" name="Status" placeholder="Enter Status" value="@Model.Status" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <!-- /.card-body -->
+
+                                <div class="card-footer">
+                                    <input type="hidden" name="id" id="id" value="@Model.id" />
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        }
+                    </div>
+                    <!-- /.card -->
+
+
+                </div>
+                <!--/.col (left) -->
+            </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+
+<script>
+    $(document).ready(function () {
+
+
+        $("[data-select]").each(function () {
+            var obj = $(this);
+            obj.val(obj.attr("data-select"))
+        });
+
+
+    });
+</script>
+
+
+
+

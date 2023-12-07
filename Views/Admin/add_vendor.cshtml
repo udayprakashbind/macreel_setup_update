@@ -1,0 +1,149 @@
+﻿@model macreel_setup.Models.admin.manage_vendor
+
+@{
+    ViewBag.Title = "add_vendor";
+    Layout = "~/Views/Shared/admin_mst.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Add /Update Vendor</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Vendor Mangement</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+
+
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">Add/Update Vendor</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            @using (Html.BeginForm("insert_vendor", "admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>VendoreName</label>
+                                            <input type="text" class="form-control" placeholder="Enter Vendore Name ..." name="VendoreName" value="@Model.VendoreName">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>ContactPerson</label>
+                                            <input type="text" class="form-control" placeholder="Enter ContactPerson ..." name="ContactPerson" value="@Model.ContactPerson">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>ContactNO</label>
+                                            <input type="number" class="form-control" placeholder="Enter ContactNO ..." name="ContactNO" value="@Model.ContactNO">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>EmailId</label>
+                                            <input type="email" class="form-control" placeholder="Enter EmailId ..." name="EmailId" value="@Model.EmailId">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>StateName</label>
+                                            <input type="text" class="form-control" placeholder="Enter StateName ..." name="StateName" value="@Model.StateName">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>StateCode</label>
+                                            <input type="text" class="form-control" placeholder="Enter StateCode..." name="StateCode" value="@Model.StateCode">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>CityName</label>
+                                            <input type="text" class="form-control" placeholder="Enter CityName..." name="CityName" value="@Model.CityName">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>CityCode</label>
+                                            <input type="text" class="form-control" placeholder="Enter CityCode ..." name="CityCode" value="@Model.CityCode">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>Pincode</label>
+                                            <input type="number" class="form-control" placeholder="Enter Pincode ..." name="Pincode" value="@Model.Pincode">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>GSTNo</label>
+                                            <input type="text" class="form-control" placeholder="Enter GSTNo ..." name="GSTNo" value="@Model.GSTNo">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>PanNo</label>
+                                            <input type="text" class="form-control" placeholder="Enter PanNo ..." name="PanNo" value="@Model.PanNo">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Address</label>
+                                            <input type="text" class="form-control" placeholder="Enter Address..." name="Address" value="@Model.Address">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-footer">
+                                    <input type="hidden" name="id" id="id" value="@Model.id" />
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            }
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

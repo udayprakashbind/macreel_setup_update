@@ -1,0 +1,84 @@
+﻿@model List<macreel_setup.Models.admin.manage_subadmin>
+
+@{
+    ViewBag.Title = "view_subadmin";
+    Layout = "~/Views/Shared/admin_mst.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>View SubAdmin List</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Sub Admin List</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+
+                            <h3 class="card-title float-right">Sub Admin List</h3>
+                        </div>
+                        <div class="card-body">
+                            <table id="example" class="table table-bordered table-hover justify-content-center text-center">
+                                <thead>
+                                    <tr class="bg-primary">
+                                        <th>Sub Admin Name</th>
+                                        <th>Password</th>
+                                        <th>MobileNo</th>
+                                        <th>Sub Admin Branch</th>
+                                        <th>Gender</th>
+                                        <th>Designation</th>
+                                        <th>JoinDate</th>
+                                        <th>Profile</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.SubAdminName</td>
+                                            <td>@item.Password</td>
+                                            <td>@item.MobileNo</td>
+                                            <td>@item.SubAdminBranch</td>
+                                            <td>@item.Gender</td>
+                                            <td>@item.Designation</td>
+                                            <td>@item.JoinDate</td>
+                                            <td>
+                                                <img src="@item.File_Path" width="60px" height="60PX">
+                                            </td>
+                                            <td><a href="/admin/add_subadmin?id=@(item.id)" class="btn btn-success" style="width:50px"><i class="fas fa-edit"></i></a> || <a href="/admin/delet_subadmin?id=@(item.id)" class="btn btn-danger " style="width:50px"> <i class="fas fa-solid fa-trash"></i></a></td>
+                                        </tr>
+
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- /.container-fluid -->
+    </section>
+
+    </div>

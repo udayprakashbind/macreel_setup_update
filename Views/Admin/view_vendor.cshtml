@@ -1,0 +1,94 @@
+﻿@model List<macreel_setup.Models.admin.manage_vendor>
+
+@{
+    ViewBag.Title = "view_vendor";
+    Layout = "~/Views/Shared/admin_mst.cshtml";
+}
+
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>View Vendor List</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Vendor List</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+
+
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+
+                            <h3 class="card-title float-right">Vendor List </h3>
+                        </div>
+                        <div class="card-body">
+                            <table id="example" class="table table-bordered table-hover justify-content-center text-center">
+                                <thead>
+                                    <tr class="bg-primary">
+                                        <th>Sr.No.</th>
+                                        <th>Vendore Name</th>
+                                        <th>Contact Person</th>
+                                        <th>Contact NO</th>
+                                        <th>EmailId</th>
+                                        <th>State Name</th>
+                                        <th>State Code</th>
+                                        <th>City Name</th>
+                                        <th>GST No</th>
+                                        <th>Pan No</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        int i = 1;
+                                        foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>@i</td>
+                                                <td>@item.VendoreName</td>
+                                                <td>@item.ContactPerson</td>
+                                                <td>@item.ContactNO</td>
+                                                <td>@item.EmailId</td>
+                                                <td>@item.StateName</td>
+                                                <td>@item.StateCode</td>
+                                                <td>@item.CityName</td>
+                                                <td>@item.GSTNo</td>
+                                                <td>@item.PanNo</td>
+                                                <td><a href="/admin/add_vendor?id=@(item.id)" class="btn btn-success" style="width:50px"><i class="fas fa-edit"></i></a> || <a href="/admin/delet_vendor?id=@(item.id)" class="btn btn-danger " style="width:50px"> <i class="fas fa-solid fa-trash"></i></a></td>
+                                            </tr>
+                                            i++;
+                                        }
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- /.container-fluid -->
+    </section>
+   
+ </div>
